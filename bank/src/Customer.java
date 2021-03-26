@@ -1,6 +1,6 @@
 /*
 BANKEOMETER BILLIONATOR BEIGHT BHOUSAND
-By [redacted since its on the *web*]
+By Anderson
 
 note: some liberties have been taken in the backend
 (in other words: some things were thrown out in the bathwater, hope they weren't mandatory lol)
@@ -15,7 +15,7 @@ public class Customer {
     private int accountNumber;
     private ArrayList<Deposit> deposits;
     private ArrayList<Withdraw> withdraws;
-    // private double savingRate; // not used?...
+    // private double savingRate; not used?...
     public static final String CHECKING = "Checking";
     public static final String SAVING = "Saving";
     private final int OVERDRAFT = 100;
@@ -72,26 +72,26 @@ public class Customer {
         /*
         Requires : account
         Modifies : none
-        Effects  : helper function as keeping track of a separately named variable is spaghetti inducing. :c
+        Effects  : This is probably terrible for performance and won't scale at all but it looks cool k
          */
-        double pos = 0;
-        double neg = 0;
+        int sum = 0;
 
         for (Deposit i : deposits) {
             if (i.getAccount().equals(account)) {
-                pos = pos + i.getAmount();
+                sum += + i.getAmount();
             }
         }
 
         for (Withdraw i : withdraws) {
             if ( i.getAccount().equals(account) ) {
-                neg = neg + i.getAmount();
+                sum -= + i.getAmount();
             }
         }
-        return pos - neg;
+        return sum;
     }
 
     public double returnBalance() {
+        //rest of the functions are all 2 liners, docstrings seem like overkill
         // 50 points to gryffindor for function overloading
         return returnBalance(CHECKING) + returnBalance(SAVING);
     }
