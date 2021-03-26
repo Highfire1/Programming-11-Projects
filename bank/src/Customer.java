@@ -4,7 +4,6 @@ By [redacted since its on the *web*]
 
 note: some liberties have been taken in the backend
 (in other words: some things were thrown out in the bathwater, hope they weren't mandatory lol)
-
  */
 
 // import javax.security.sasl.SaslClient; oh no o.o
@@ -17,7 +16,6 @@ public class Customer {
     private ArrayList<Deposit> deposits;
     private ArrayList<Withdraw> withdraws;
     // private double savingRate; // not used?...
-
     public static final String CHECKING = "Checking";
     public static final String SAVING = "Saving";
     private final int OVERDRAFT = 100;
