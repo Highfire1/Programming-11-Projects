@@ -1,6 +1,6 @@
 /*
 BANKEOMETER BILLIONATOR BEIGHT BHOUSAND
-By Anderson
+By [redacted]
 
 note: some liberties have been taken in the backend
 (in other words: some things were thrown out in the bathwater, hope they weren't mandatory lol)
