@@ -3,7 +3,7 @@ Text Scanner 1600
 By [redacted]
 
 Looks for "ProgrammingHistory.txt" by default
-(neat 0 errors & zero warnings)
+(neat zero errors & zero warnings)
 */
 
 import java.io.BufferedReader;
@@ -19,7 +19,6 @@ public class Main {
         ArrayList<String> text = createLineArray(filePath);
         ArrayList<Integer> out = searchForWord(text, search);
         fancyPrint(out);
-
     }
 
     private static ArrayList<String> createLineArray(String filename) throws IOException {
@@ -64,8 +63,8 @@ public class Main {
             System.out.println("$ rm -rf\n");
             return;
             //but seriously though, kind of curious on how you do test these
-
         }
+
         System.out.println("Match found in lines:");
         for(int i : out) {
             System.out.println(i + 1); // its for a human, if intellij starts at 1 this should start at 1
