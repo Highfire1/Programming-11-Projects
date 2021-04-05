@@ -22,8 +22,9 @@ public class Main {
     }
 
     private static ArrayList<String> createLineArray(String filename) throws IOException {
-        //reads and converts the provided file into an arraylist
+        //Reads the provided file and copies it into an arraylist.
         ArrayList<String> lines = new ArrayList<>();
+
         FileReader test = new FileReader(filename);
         BufferedReader buffer = new BufferedReader(test);
 
@@ -37,37 +38,27 @@ public class Main {
     }
 
     private static ArrayList<Integer> searchForWord(ArrayList<String> inArray, String search) {
-        // takes a string array then searches it for the search term
-        // returns all indexes in which the search term is present
+        // Takes a string array and a search term.
+        // Returns all indexes in which the search term is present.
         ArrayList<Integer> outArray = new ArrayList<>();
 
-        if (inArray.isEmpty()) { return outArray; } // never runs but its the thought that counts right
-
-        int i = 0;
-        int max = inArray.size();
-        String line;
-
-        while(i < max) {
-            line = inArray.get(i);
-            if (line.contains(search)) {
+        for(int i = 0, max = inArray.size(); i < max; i++) {
+            if (inArray.get(i).contains(search)) {
                 outArray.add(i);
             }
-            i += 1;
         }
         return outArray;
     }
 
     private static void fancyPrint(ArrayList<Integer> out) {
-        // prints fancily
+        // handles the singular extraneous case
+
         if (out.isEmpty()) {
             System.out.println("$ rm -rf\n");
             return;
-            //but seriously though, kind of curious on how you do test these
+            // but seriously though, kind of curious on how these assignments are even tested
         }
 
-        System.out.println("Match found in lines:");
-        for(int i : out) {
-            System.out.println(i + 1); // its for a human, if intellij starts at 1 this should start at 1
-        }
+        System.out.println("Match found in lines: " + out);
     }
 }
