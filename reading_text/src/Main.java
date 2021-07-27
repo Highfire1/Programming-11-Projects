@@ -1,6 +1,6 @@
 /*
 Text Scanner 1600
-By [redacted]
+By Anderson T
 
 Looks for "ProgrammingHistory.txt" by default
 (neat zero errors & zero warnings)

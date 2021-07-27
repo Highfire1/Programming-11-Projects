@@ -1,6 +1,6 @@
 package sample;
 
-import javafx.application.Application;
+package javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
