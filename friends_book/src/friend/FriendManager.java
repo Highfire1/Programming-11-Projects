@@ -1,4 +1,5 @@
-package sample;
+package friend;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;

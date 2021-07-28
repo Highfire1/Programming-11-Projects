@@ -3,7 +3,7 @@
 // oh no 88 pages: https://www.fbiic.gov/public/2008/nov/Naming_practice_guide_UK_2006.pdf
 
 
-package sample;
+package friend;
 
 import java.io.Serializable;
 

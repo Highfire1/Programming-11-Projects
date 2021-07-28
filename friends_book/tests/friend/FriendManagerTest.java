@@ -1,6 +1,9 @@
-package sample;
+package friend;
 
 
+import friend.Friend;
+import friend.FriendManager;
+import friend.Name;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

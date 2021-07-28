@@ -1,5 +1,7 @@
 package sample;
 
+import friend.Friend;
+import friend.FriendManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;

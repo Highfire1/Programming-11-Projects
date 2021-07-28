@@ -1,4 +1,4 @@
-package sample;
+package friend;
 
 import java.io.Serializable;
 import java.time.LocalDate;
