@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Friend implements Serializable {
-    private Name name = new Name();
+    // keeping https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/ in mind...
+    private String name = "";
     private LocalDate birthdate = LocalDate.of(0, 1, 1);
     private String phone_number = "";
     private String profile_image = "assets/default.png";
@@ -29,11 +30,11 @@ public class Friend implements Serializable {
     }
 
 
-    public Name getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Name name) {
+    public void setName(String name) {
         this.name = name;
     }
 

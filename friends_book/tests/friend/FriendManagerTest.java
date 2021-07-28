@@ -1,9 +1,6 @@
 package friend;
 
 
-import friend.Friend;
-import friend.FriendManager;
-import friend.Name;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,9 +40,7 @@ class FriendManagerTest {
     @Test
     void add_friend() {
         Friend bob = new Friend();
-        Name name = new Name();
-        name.setName("bob");
-        bob.setName(name);
+        bob.setName("bob");
 
         friends.add_friend(bob);
 
@@ -55,9 +50,7 @@ class FriendManagerTest {
     @Test
     void delete_friend() {
         Friend bob = new Friend(123);
-        Name name = new Name();
-        name.setName("bob");
-        bob.setName(name);
+        bob.setName("bob");
 
         friends.add_friend(bob);
 
