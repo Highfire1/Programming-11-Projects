@@ -2,24 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b387631-ce7e-4304-bf0e-1acc0385f013" name="Default Changelist" comment="this better work">
-      <change beforePath="$PROJECT_DIR$/../Expressions Assignment/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Expressions Assignment/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Expressions Assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Expressions Assignment/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Expressions Assignment/out/production/Expressions Assignment/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Expressions Assignment/out/production/Expressions Assignment/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Expressions Assignment/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Expressions Assignment/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectNumber1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/ProjectNumber1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectNumber1/ProjectNumber1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/out/production/ProjectNumber1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectNumber1/out/production/ProjectNumber1/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/out/production/ProjectNumber1/StringTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectNumber1/out/production/ProjectNumber1/StringTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/out/production/ProjectNumber1/TestClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/out/test/ProjectNumber1/TestClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectNumber1/out/test/ProjectNumber1/TestClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectNumber1/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjectNumber1/src/Tests/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectNumber1/src/Tests/TestClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/School.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../friends_book/assets/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../friends_book/src/sample/FriendManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../friends_book/src/sample/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../friends_book/src/sample/Friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../friends_book/src/sample/FriendTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../friends_book/src/sample/FriendTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../friends_book/src/sample/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/../friends_book/src/sample/Name.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,9 +87,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533331466307" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -184,6 +172,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="this better work" />

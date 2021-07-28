@@ -5,7 +5,9 @@
 
 package sample;
 
-public class Name {
+import java.io.Serializable;
+
+public class Name implements Serializable {
     private String name;
     private String surname;
     private String middle_name;
@@ -22,8 +24,9 @@ public class Name {
 
     @Override
     public String toString() {
+
         if (name.isEmpty() && surname.isEmpty() ) {
-            return "empty name";
+            return "NO_NAME";
         } else if (name.isEmpty()) {
             return surname;
         } else {

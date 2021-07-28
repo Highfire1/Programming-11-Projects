@@ -1,24 +1,27 @@
 package sample;
 
-import javafx.scene.image.Image;
+import java.io.Serializable;
+import java.time.LocalDate;
 
-import java.util.Date;
+public class Friend implements Serializable {
+    private Name name = new Name();
+    private LocalDate birthdate = LocalDate.of(0, 0, 0);
+    private String phone_number = "";
+    private String profile_image = "assets/default.png";
+    private String notes = "";
+    private Boolean favorite = false;
+    private int id;
 
-public class Friend {
-    public Name name;
-    public Date birthdate;
-    public String phone_number;
-    public Image profile_image;
-    public String notes;
-    public Boolean favorite;
 
-    Friend(){
-        this.name = new Name();
-        this.birthdate = new Date();
-        this.phone_number = "";
-        this.profile_image = new Image("/assets/default.png");
-        this.notes = "";
-        this.favorite = false;
+
+    Friend(int id){
+        this.id = id;
+    }
+
+
+    @Override
+    public String toString(){
+        return this.name.toString();
     }
 
 
@@ -30,11 +33,11 @@ public class Friend {
         this.name = name;
     }
 
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -46,11 +49,11 @@ public class Friend {
         this.phone_number = phone_number;
     }
 
-    public Image getProfile_image() {
+    public String getProfile_image() {
         return profile_image;
     }
 
-    public void setProfile_image(Image profile_image) {
+    public void setProfile_image(String profile_image) {
         this.profile_image = profile_image;
     }
 
@@ -68,5 +71,13 @@ public class Friend {
 
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
