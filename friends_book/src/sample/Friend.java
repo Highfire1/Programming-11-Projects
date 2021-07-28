@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Friend implements Serializable {
     private Name name = new Name();
-    private LocalDate birthdate = LocalDate.of(0, 0, 0);
+    private LocalDate birthdate = LocalDate.of(0, 1, 1);
     private String phone_number = "";
     private String profile_image = "assets/default.png";
     private String notes = "";
@@ -16,6 +16,10 @@ public class Friend implements Serializable {
 
     Friend(int id){
         this.id = id;
+    }
+
+    Friend(){
+        this.id = 0;
     }
 
 

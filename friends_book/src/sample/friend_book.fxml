@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <VBox>
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Options">
+                  <items>
+                    <MenuItem fx:id="menu_new" mnemonicParsing="false" onAction="#menu_new_method" text="New" />
+                        <MenuItem fx:id="menu_delete" mnemonicParsing="false" onAction="#menu_delete_method" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Misc">
+                  <items>
+                    <MenuItem fx:id="menu_about" mnemonicParsing="false" onAction="#menu_about_method" text="About" />
+                    <MenuItem fx:id="menu_settings" mnemonicParsing="false" onAction="#menu_settings_method" text="Settings" />
+                        <MenuItem fx:id="menu_close" mnemonicParsing="false" onAction="#menu_close_method" text="Close" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ListView fx:id="list_view" onMouseClicked="#list_view_mouseclicked" prefHeight="773.0" prefWidth="483.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

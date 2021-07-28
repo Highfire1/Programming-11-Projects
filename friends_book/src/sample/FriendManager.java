@@ -9,12 +9,18 @@ public class FriendManager implements Serializable {
     int id = 0;
 
     public void add_blank_friend(){
-        friends.add(new Friend(id));
-        id++;
+        this.friends.add(new Friend(id));
+        this.id++;
+    }
+
+    public void add_friend(Friend friend){
+        friend.setId(this.id);
+        this.friends.add(friend);
+        this.id++;
     }
 
     public Friend get_friend(int id){
-        for (Friend friend : friends) {
+        for (Friend friend : this.friends) {
             if (friend.getId() == id) {
                 return friend;
             }
@@ -22,12 +28,10 @@ public class FriendManager implements Serializable {
         return null;
     }
 
-    public void add_friend(Friend friend){
-        friends.add(friend);
-    }
+
 
     public void delete_friend(Friend friend){
-        friends.remove(friend);
+        this.friends.remove(friend);
     }
 
     public ArrayList<Friend> getArray(){
@@ -35,10 +39,9 @@ public class FriendManager implements Serializable {
     }
 
     public void dump_info() {
-        System.out.println("DUMPING FriendManager Info:");
-        System.out.println("id: " + id);
-        for (Friend friend : friends) {
-            System.out.println(friend.toString());
+        System.out.println("DUMPING FriendManager Info: (id: " + id + ")");
+        for (Friend friend : this.friends) {
+            System.out.println(friend.getId() + " " + friend.toString());
         }
     }
 

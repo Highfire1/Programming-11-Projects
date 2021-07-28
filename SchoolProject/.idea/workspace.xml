@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b387631-ce7e-4304-bf0e-1acc0385f013" name="Default Changelist" comment="this better work">
-      <change afterPath="$PROJECT_DIR$/../friends_book/assets/default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../friends_book/src/sample/FriendManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../friends_book/src/sample/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../friends_book/src/sample/Friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../friends_book/src/sample/FriendTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../friends_book/src/sample/FriendTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../friends_book/src/sample/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/../friends_book/src/sample/Name.java" afterDir="false" />
-    </list>
+    <list default="true" id="5b387631-ce7e-4304-bf0e-1acc0385f013" name="Default Changelist" comment="updates mhm" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +78,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533331466307" />
@@ -122,6 +117,14 @@
       <updated>1533328870125</updated>
       <workItem from="1533328874102" duration="2362000" />
     </task>
+    <task id="LOCAL-00001" summary="updates mhm">
+      <created>1627445901933</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1627445901933</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -176,7 +179,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="this better work" />
-    <option name="LAST_COMMIT_MESSAGE" value="this better work" />
+    <MESSAGE value="updates mhm" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates mhm" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Course.java">
