@@ -1,11 +1,13 @@
 package friend;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Friend implements Serializable {
     // keeping https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/ in mind...
-    private String name = "";
+    private String name = "BLANK_NAME";
     private LocalDate birthdate = LocalDate.of(0, 1, 1);
     private String phone_number = "";
     private String profile_image = "assets/default.png";
@@ -24,11 +26,36 @@ public class Friend implements Serializable {
     }
 
 
+
     @Override
     public String toString(){
         return this.name.toString();
     }
 
+    public String save_values(){
+        String data = "";
+        for (Field f : getClass().getDeclaredFields()) {
+            try {
+                data += f.get(this) + "␟";
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public void load_values(String line){
+        String[] values = line.split("␟");
+
+        this.name = values[0];
+        this.birthdate = LocalDate.parse(values[1]);
+        this.phone_number = values[2];
+        this.profile_image = values[3];
+        this.notes = values[4];
+        this.favorite = Boolean.parseBoolean(values[5]);
+        this.id = Integer.parseInt(values[6]);
+
+    }
 
     public String getName() {
         return name;

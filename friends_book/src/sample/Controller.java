@@ -39,13 +39,6 @@ public class Controller implements Initializable {
 
     }
 
-
-    public void populate_label(FriendManager friends) {
-
-        //list_view.setItems(friends.getObservableList());
-
-    }
-
     public void menu_close_method(ActionEvent actionEvent) throws IOException {
 
         friends.save_data();
@@ -58,6 +51,7 @@ public class Controller implements Initializable {
         list_view.getSelectionModel().clearSelection();
 
         friends.add_blank_friend();
+
     }
 
     public void menu_about_method(ActionEvent actionEvent) {
