@@ -31,19 +31,16 @@ public class Controller implements Initializable {
 
         friends = load_from_file("data/friends.tmp");
 
-        System.out.println(friends);
+        populate_label(friends);
 
-        list_view.getItems().add("Bob Jenkins");
-        list_view.getItems().add("spooky man");
-
-        populate_label(friends.getArray());
     }
 
-    private void save_to_file(Object obj, String pathname) {
+    private void save_to_file(FriendManager friends, String pathname) {
         try {
+            friends.dump_info();
             FileOutputStream fos = new FileOutputStream(pathname);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(obj);
+            oos.writeObject(friends);
             oos.close();
         }  catch (IOException e) {
             e.printStackTrace();
@@ -55,11 +52,13 @@ public class Controller implements Initializable {
 
         if (new File(pathname).exists()) {
             try {
-
+                System.out.println("loading file");
                 FileInputStream fis = new FileInputStream(pathname);
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 friends = (FriendManager) ois.readObject();
                 ois.close();
+
+                friends.dump_info();
 
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -73,9 +72,9 @@ public class Controller implements Initializable {
         }
     }
 
-    public void populate_label(ArrayList<Friend> friends) {
-        for (Friend fr : friends) {
-            System.out.println(fr.toString());
+    public void populate_label(FriendManager friends) {
+        for (Friend fr : friends.getArray()) {
+            list_view.getItems().add(fr);
         }
     }
 
@@ -92,11 +91,8 @@ public class Controller implements Initializable {
         String x = list_view.getSelectionModel().getSelectedItems().toString();
         list_view.getSelectionModel().clearSelection();
 
-        System.out.println(x);
+        friends.add_blank_friend();
 
-        //Friend aa = new Friend(12);
-        //friends.add(aa);
-        System.out.println("FRIEND ADDED");
 
     }
 
