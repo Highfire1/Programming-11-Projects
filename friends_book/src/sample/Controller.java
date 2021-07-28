@@ -4,6 +4,7 @@ import friend.Friend;
 import friend.FriendManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -26,74 +27,37 @@ public class Controller implements Initializable {
 
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        friends = load_from_file("data/friends.tmp");
+        friends = new FriendManager();
+        friends.load_data();
 
-        populate_label(friends);
-
-    }
-
-    private void save_to_file(FriendManager friends, String pathname) {
-        try {
-            friends.dump_info();
-            FileOutputStream fos = new FileOutputStream(pathname);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(friends);
-            oos.close();
-        }  catch (IOException e) {
-            e.printStackTrace();
-        }
+        list_view.setItems(friends.getObservableList());
 
     }
 
-    private FriendManager load_from_file(String pathname) {
-
-        if (new File(pathname).exists()) {
-            try {
-                System.out.println("loading file");
-                FileInputStream fis = new FileInputStream(pathname);
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                friends = (FriendManager) ois.readObject();
-                ois.close();
-
-                friends.dump_info();
-
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            return friends;
-
-        } else {
-            // if no data exists, generate new
-            return new FriendManager();
-        }
-    }
 
     public void populate_label(FriendManager friends) {
-        for (Friend fr : friends.getArray()) {
-            list_view.getItems().add(fr);
-        }
+
+        //list_view.setItems(friends.getObservableList());
+
     }
 
     public void menu_close_method(ActionEvent actionEvent) throws IOException {
 
-        save_to_file(friends,"data/friends.tmp");
+        friends.save_data();
         Platform.exit();
     }
 
     public void list_view_mouseclicked(MouseEvent mouseEvent) {
-        list_view.getItems().add("MORE TEXT!");
-        System.out.println(mouseEvent.getX());
 
         String x = list_view.getSelectionModel().getSelectedItems().toString();
         list_view.getSelectionModel().clearSelection();
 
         friends.add_blank_friend();
-
-
     }
 
     public void menu_about_method(ActionEvent actionEvent) {
@@ -106,5 +70,13 @@ public class Controller implements Initializable {
     }
 
     public void menu_new_method(ActionEvent actionEvent) {
+    }
+
+    public void menu_save_method(ActionEvent actionEvent) {
+        friends.save_data();
+    }
+
+    public void menu_load_method(ActionEvent actionEvent) {
+        friends.load_data();
     }
 }

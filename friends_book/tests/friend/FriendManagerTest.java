@@ -24,7 +24,7 @@ class FriendManagerTest {
 
         friends.add_blank_friend();
 
-        assertEquals(friends.getArray().size(), 1);
+        assertEquals(friends.getObservableList().size(), 1);
     }
 
     @Test
@@ -49,7 +49,7 @@ class FriendManagerTest {
 
         friends.add_friend(bob);
 
-        assertEquals(friends.getArray().size(), 1);
+        assertEquals(friends.getObservableList().size(), 1);
     }
 
     @Test
@@ -61,22 +61,22 @@ class FriendManagerTest {
 
         friends.add_friend(bob);
 
-        assertEquals(friends.getArray().size(), 1);
+        assertEquals(friends.getObservableList().size(), 1);
 
         friends.delete_friend(bob);
 
-        assertEquals(friends.getArray().size(), 0);
+        assertEquals(friends.getObservableList().size(), 0);
 
     }
 
     @Test
     void getArray() {
 
-        assertEquals(friends.getArray().size(), 0);
+        assertEquals(friends.getObservableList().size(), 0);
 
         friends.add_blank_friend();
 
-        assertEquals(friends.getArray().size(), 1);
+        assertEquals(friends.getObservableList().size(), 1);
 
     }
 
