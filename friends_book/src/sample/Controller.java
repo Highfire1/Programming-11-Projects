@@ -16,6 +16,7 @@ import javafx.scene.layout.Background;
 import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Controller implements Initializable {
@@ -58,6 +59,10 @@ public class Controller implements Initializable {
 
         // select first object in listview
         setListViewFirstItem();
+
+        //this REFUSES to work properly ;-;
+        // no but seriously I've spent so much time trying to make this work and it absolutely refuses
+        date_birthday.disableProperty().set(true);
     }
 
     // get selected item in listview
@@ -94,9 +99,12 @@ public class Controller implements Initializable {
         profile_image.setImage(load_img(fr.getProfile_image()));
         text_name.setText(fr.getName());
         // if default date (defined in Friend.Java), do not print a value
+        date_birthday.getEditor().setText("");
+
         if (fr.getBirthdate().equals(LocalDate.of(1970, 1, 1))) {
-            date_birthday.getEditor().clear();
+            date_birthday.getEditor().setText("");
         } else {
+            System.out.println(fr.getBirthdate());
             date_birthday.setValue(fr.getBirthdate());
         }
         text_phone.setText(fr.getPhone_number());
@@ -169,12 +177,36 @@ public class Controller implements Initializable {
     }
 
     public void date_birthday_method2(KeyEvent keyEvent) {
-        getListViewSelected().setBirthdate(date_birthday.getValue());
-        System.out.println(date_birthday.getEditor().getText());
+        // getValue cannot be used because it doesn't update upon text entry see
+        // https://bugs.openjdk.java.net/browse/JDK-8092295?page=com.atlassian.jira.plugin.system.issuetabpanels%3Achangehistory-tabpanel
+        // also yes this errors if something un-parsable is entered, deal with it I'm not building a custom parser
+
+        Datepicker_Manager(date_birthday);
     }
 
     public void date_birthday_method3(MouseEvent mouseEvent) {
-        getListViewSelected().setBirthdate(date_birthday.getValue());
-        System.out.println(date_birthday.getEditor().getText());
+        Datepicker_Manager(date_birthday);
+    }
+
+    public void date_birthday_method1(ActionEvent actionEvent) {
+
+        //Datepicker_Manager(date_birthday);
+    }
+
+    // fine maybe ill build a SMALL parser because LocalDate isn't playing nice
+    public void Datepicker_Manager(DatePicker paincreator){
+        System.out.println("datepicker manager called");
+        String date = date_birthday.getEditor().getText();
+
+        if (date.equals("")) {
+            // if date is blank then set to "blank value"
+            getListViewSelected().setBirthdate(LocalDate.of(1970, 1, 1));
+        } else if (date.length() != 10) {
+            // if date is of incorrect length don't potentially cause errors
+            return;
+        } else {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            getListViewSelected().setBirthdate(LocalDate.parse(date, formatter));
+        }
     }
 }

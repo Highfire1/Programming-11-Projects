@@ -33,7 +33,8 @@ public class Friend implements Serializable {
                 e.printStackTrace();
             }
         }
-        return data + "\u2028";
+        data = data.substring(0, data.length() - 1); // remove last separator
+        return data + "\u2028"; // add line separator
     }
 
     public void load_values(String content){

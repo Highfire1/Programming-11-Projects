@@ -18,6 +18,7 @@ public class Main extends Application {
         // ListView, let alone the AnchorView doesn't expand with the window and that will take 2 years to fix .-.
         primaryStage.setMaxWidth(480);
         primaryStage.setMaxHeight(800);
+        primaryStage.setMinWidth(480);
     }
 
     @Override
