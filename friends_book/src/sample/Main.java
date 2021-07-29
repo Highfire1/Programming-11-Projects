@@ -11,9 +11,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("friend_book.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Andys Friend Book");
         primaryStage.setScene(new Scene(root, 480, 800));
         primaryStage.show();
+    }
+
+    @Override
+    public void stop(){
+        Controller.getFriends().save_data();
     }
 
     public static void main(String[] args) {

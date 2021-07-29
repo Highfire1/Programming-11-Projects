@@ -1,0 +1,6 @@
+bozo␟2000-01-01␟111␟default.png␟12345!aaaAJSJA␟true␟0␟
+BLANK_NAME␟2000-01-01␟␟default.png␟␟false␟2␟
+BLANK_NAME␟2000-01-01␟␟default.png␟nooooooooooooo␟false␟1␟
+GOOSE␟2000-01-01␟␟goose.jpg␟␟false␟0␟
+BLANK_NAME␟2000-01-01␟␟default.png␟␟false␟0␟
+BLANK_NAME␟2000-01-01␟␟default.png␟␟false␟1␟

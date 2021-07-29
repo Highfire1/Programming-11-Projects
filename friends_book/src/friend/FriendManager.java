@@ -45,13 +45,6 @@ public class FriendManager implements Serializable {
         return this.friends;
     }
 
-    public void dump_info() {
-        System.out.println("DUMPING FriendManager Info: (id: " + id + ")");
-        for (Friend friend : this.friends) {
-            System.out.println(friend.getId() + " " + friend.toString());
-        }
-    }
-
     public void save_data() {
         try {
             FileWriter fw = new FileWriter(save_path, false);
@@ -70,6 +63,7 @@ public class FriendManager implements Serializable {
 
     public void load_data()  {
         if (!new File(save_path).exists()) {
+            add_blank_friend();
             return;
         }
 
