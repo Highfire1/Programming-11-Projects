@@ -1,16 +1,41 @@
 package friend;
 
 import friend.Friend;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FriendTest {
+    public Friend bob;
+    String content = "Bob the Builder␟1970-01-01␟123-456-7890␟default.png␟big fan of apple pie␟true␟ ";
+
+    @BeforeEach
+    void BeforeEach(){
+        bob = new Friend();
+    }
+
     @Test
-    void create_friend() {
-        Friend whee = new Friend();
-        whee.setId(123456);
-        assertEquals(whee.getId(), 123456);
+    void load_values() {
+        bob.load_values(content);
+
+        assertEquals(bob.getName(), "Bob the Builder");
+        assertEquals(bob.getBirthdate(), LocalDate.of(1970, 1, 1));
+        assertEquals(bob.getPhone_number(), "123-456-7890");
+        assertEquals(bob.getProfile_image(), "default.png");
+        assertEquals(bob.getNotes(), "big fan of apple pie");
+        assertEquals(bob.getFavorite(), true);
+
+    }
+
+    @Test
+    void save_values(){
+
+        bob.load_values(content);
+
+        assertEquals(bob.save_values(), content);
     }
 
 }

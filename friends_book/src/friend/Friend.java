@@ -33,7 +33,7 @@ public class Friend implements Serializable {
                 e.printStackTrace();
             }
         }
-        return data;
+        return data + "\u2028";
     }
 
     public void load_values(String content){

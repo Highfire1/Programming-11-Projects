@@ -32,7 +32,6 @@ public class FriendManager implements Serializable {
 
             for (Friend friend : friends) {
                 bw.write(friend.save_values());
-                bw.write("\u2028");
                 bw.newLine();
             }
             bw.close();
