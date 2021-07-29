@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.corba.se.impl.legacy.connection.USLPort;
 import friend.Friend;
 import friend.FriendManager;
 import javafx.application.Platform;
@@ -50,6 +51,10 @@ public class Controller implements Initializable {
         images = new ArrayList<>();
         images.add("default.png");
         images.add("goose.jpg");
+        images.add("BFF.png");
+        images.add("doc.png");
+        images.add("eye.png");
+        images.add("pig.gif");
 
         // select first object in listview
         setListViewFirstItem();
@@ -163,8 +168,13 @@ public class Controller implements Initializable {
         list_view.refresh();
     }
 
-    public void date_birthday_method(ActionEvent actionEvent) {
+    public void date_birthday_method2(KeyEvent keyEvent) {
         getListViewSelected().setBirthdate(date_birthday.getValue());
+        System.out.println(date_birthday.getEditor().getText());
     }
 
+    public void date_birthday_method3(MouseEvent mouseEvent) {
+        getListViewSelected().setBirthdate(date_birthday.getValue());
+        System.out.println(date_birthday.getEditor().getText());
+    }
 }

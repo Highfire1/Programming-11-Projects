@@ -44,7 +44,7 @@
                   <Text layoutX="180.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STAR" wrappingWidth="45.5625" />
                   <TextField fx:id="text_name" layoutX="240.0" layoutY="19.0" onKeyReleased="#text_name_update" prefHeight="25.0" prefWidth="210.0" />
                   <TextField fx:id="text_phone" layoutX="240.0" layoutY="53.0" onKeyReleased="#text_phone_update" prefHeight="25.0" prefWidth="210.0" />
-                  <DatePicker fx:id="date_birthday" layoutX="240.0" layoutY="88.0" onAction="#date_birthday_method" prefWidth="210.0" />
+                  <DatePicker fx:id="date_birthday" layoutX="240.0" layoutY="88.0" onKeyReleased="#date_birthday_method2" onMouseClicked="#date_birthday_method3" prefWidth="210.0" />
                   <CheckBox fx:id="check_favorite" layoutX="240.0" layoutY="127.0" mnemonicParsing="false" onMouseReleased="#check_favorite_update" />
                   <TextArea fx:id="text_notes" layoutX="20.0" layoutY="180.0" onKeyReleased="#text_notes_update" prefHeight="200.0" prefWidth="430.0" />
                </children>
