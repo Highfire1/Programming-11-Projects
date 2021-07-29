@@ -36,53 +36,59 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        // create FriendManager and load data from file
         friends = new FriendManager();
         friends.load_data();
 
+        // initialize JavaFX elements
         list_view.setItems(friends.getObservableList());
         list_view.setBackground(Background.EMPTY);
         text_notes.setWrapText(true);
 
+        // load image paths into array
+        // yes a hashmap would be more efficient but I couldn't figure out how to get an index from it
         images = new ArrayList<>();
         images.add("default.png");
         images.add("goose.jpg");
 
-
+        // select first object in listview
         setListViewFirstItem();
     }
 
+    // get selected item in listview
     private Friend getListViewSelected(){
         return (Friend) list_view.getSelectionModel().getSelectedItems().get(0);
     }
 
+    // load Images from data
     private Image load_img(String path) {
         return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/" + path)));
     }
 
+    // set listview selection to first entry to avoid errors
     private void setListViewFirstItem(){
         list_view.scrollTo(0);
         list_view.getSelectionModel().select(0);
         set_anchorpane_fields();
     }
 
-
+    // an alternative way to exit :D
     public void menu_close_method(ActionEvent actionEvent) throws IOException {
-        friends.save_data();
-        Platform.exit();
+        Platform.exit(); // calls stop in Main so no need to save here
     }
 
+    // update when new listview item is selected
     public void list_view_mouseclicked(MouseEvent mouseEvent) {
-        if (getListViewSelected() == null) {
-            return;
-        }
         set_anchorpane_fields();
     }
 
+    // load data from selected Friend into the AnchorView
     public void set_anchorpane_fields(){
         Friend fr = getListViewSelected();
 
         profile_image.setImage(load_img(fr.getProfile_image()));
         text_name.setText(fr.getName());
+        // if default date (defined in Friend.Java), do not print a value
         if (fr.getBirthdate().equals(LocalDate.of(1970, 1, 1))) {
             date_birthday.getEditor().clear();
         } else {
@@ -93,7 +99,7 @@ public class Controller implements Initializable {
         text_notes.setText(fr.getNotes());
     }
 
-
+    // deletes selected Friend (and clears AnchorView)
     public void menu_delete_method(ActionEvent actionEvent) {
         friends.delete_friend(getListViewSelected());
         list_view.getSelectionModel().clearSelection();
@@ -115,10 +121,31 @@ public class Controller implements Initializable {
 
     public void menu_load_method(ActionEvent actionEvent) {
         friends.load_data();
-        list_view.refresh();
+        list_view.refresh(); // I thought the whole point of ObservableList was to skip requiring this but oh well
         setListViewFirstItem();
     }
 
+    // use to call save/load from other classes
+    public static FriendManager getFriendsObject() {
+        return friends;
+    }
+
+    // Iterate through available profile images when profile image is clicked
+    public void profile_image_update(MouseEvent mouseEvent) {
+        int i = images.indexOf(getListViewSelected().getProfile_image());
+
+        if(i == images.size() - 1) {
+            i = 0;
+        } else {
+            i++;
+        }
+
+        getListViewSelected().setProfile_image(images.get(i));
+
+        set_anchorpane_fields();
+    }
+
+    // Methods to update selected Friend when a change is made
     public void check_favorite_update(MouseEvent inputMethodEvent) {
         getListViewSelected().setFavorite(check_favorite.isSelected());
     }
@@ -140,23 +167,4 @@ public class Controller implements Initializable {
         getListViewSelected().setBirthdate(date_birthday.getValue());
     }
 
-    public static FriendManager getFriendsObject() {
-        return friends;
-    }
-
-
-    public void profile_image_update(MouseEvent mouseEvent) {
-
-        int i = images.indexOf(getListViewSelected().getProfile_image());
-
-        if(i == images.size() - 1) {
-            i = 0;
-        } else {
-            i++;
-        }
-
-        getListViewSelected().setProfile_image(images.get(i));
-
-        set_anchorpane_fields();
-    }
 }

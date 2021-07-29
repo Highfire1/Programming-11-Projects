@@ -1,12 +1,13 @@
 package friend;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
 
+// pshhh why serialize an object when you can serialize it yourself :D
 public class FriendManager implements Serializable {
+
     private ObservableList<Friend> friends = FXCollections.observableArrayList();
     int id = 0;
     private final String save_path = "data/friends.txt";
