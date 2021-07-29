@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.io.*;
 
-// pshhh why serialize an object when you can serialize it yourself :D
+// psh why serialize an object when you can serialize it yourself :D
 public class FriendManager implements Serializable {
 
     private ObservableList<Friend> friends = FXCollections.observableArrayList();
@@ -42,8 +42,8 @@ public class FriendManager implements Serializable {
     }
 
     public void load_data()  {
-        File testfile = new File(save_path);
-        if (!testfile.exists() || testfile.length() == 0) {
+        File test_file = new File(save_path);
+        if (!test_file.exists() || test_file.length() == 0) {
             add_blank_friend();
             return;
         }
@@ -59,11 +59,11 @@ public class FriendManager implements Serializable {
             // reads lines until it encounters a line separator then it sends the data to a new Friend to parse
 
             while((line = br.readLine()) != null) {
-                actualline += line + "\n"; // absolutely atrocious and i need to learn how to use stringBuilder but it works
+                actualline += line + "\n"; // absolutely atrocious and I need to learn how to use stringBuilder but it works
 
                 if (actualline.contains("\u2028")) {
 
-                    actualline.replace("\u2028", "");
+                    actualline = actualline.replace("\u2028", ""); // yes this is completely cosmetic
 
                     Friend tmp = new Friend();
                     tmp.load_values(actualline);

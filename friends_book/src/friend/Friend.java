@@ -3,7 +3,6 @@ package friend;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.time.LocalDate;
-import java.util.List;
 
 public class Friend implements Serializable {
     // keeping https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/ in mind...
@@ -14,18 +13,15 @@ public class Friend implements Serializable {
     private String notes = "";
     private Boolean favorite = false;
 
-
-    Friend(){}
-
-
-
     @Override
     public String toString(){
-        return this.name.toString();
+        return this.name;
     }
 
     public String save_values(){
         String data = "";
+
+        // thanks stackoverflow :D
         for (Field f : getClass().getDeclaredFields()) {
             try {
                 data += f.get(this) + "␟";
@@ -45,6 +41,7 @@ public class Friend implements Serializable {
         this.phone_number = values[2];
         this.profile_image = values[3];
         this.notes = values[4];
+        values[5] = values[5].replaceAll("\\s+", ""); // I don't know how this newline got here but bye
         this.favorite = Boolean.parseBoolean(values[5]);
     }
 

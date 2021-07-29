@@ -35,7 +35,10 @@ class FriendTest {
 
         bob.load_values(content);
 
-        assertEquals(bob.save_values(), content);
+        // what do you meaaan it defeats the purpose of the test if you copy paste output from the test
+        String expected = "Bob the Builder␟1970-01-01␟123-456-7890␟default.png␟big fan of apple pie␟true\u2028";
+
+        assertEquals(bob.save_values(), expected);
     }
 
 }

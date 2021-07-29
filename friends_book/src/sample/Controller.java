@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.corba.se.impl.legacy.connection.USLPort;
 import friend.Friend;
 import friend.FriendManager;
 import javafx.application.Platform;
@@ -13,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 
-import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -62,6 +60,8 @@ public class Controller implements Initializable {
 
         //this REFUSES to work properly ;-;
         // no but seriously I've spent so much time trying to make this work and it absolutely refuses
+        // for some reason, the DatePicker isn't editable while its in focus and that's terrible
+        // + a variety of other small annoying things
         date_birthday.disableProperty().set(true);
     }
 
@@ -70,7 +70,7 @@ public class Controller implements Initializable {
         return (Friend) list_view.getSelectionModel().getSelectedItems().get(0);
     }
 
-    // load Images from data
+    // load Images from /assets/
     private Image load_img(String path) {
         return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/" + path)));
     }
@@ -83,7 +83,7 @@ public class Controller implements Initializable {
     }
 
     // an alternative way to exit :D
-    public void menu_close_method(ActionEvent actionEvent) throws IOException {
+    public void menu_close_method(ActionEvent actionEvent) {
         Platform.exit(); // calls stop in Main so no need to save here
     }
 
@@ -104,7 +104,6 @@ public class Controller implements Initializable {
         if (fr.getBirthdate().equals(LocalDate.of(1970, 1, 1))) {
             date_birthday.getEditor().setText("");
         } else {
-            System.out.println(fr.getBirthdate());
             date_birthday.setValue(fr.getBirthdate());
         }
         text_phone.setText(fr.getPhone_number());
@@ -177,10 +176,6 @@ public class Controller implements Initializable {
     }
 
     public void date_birthday_method2(KeyEvent keyEvent) {
-        // getValue cannot be used because it doesn't update upon text entry see
-        // https://bugs.openjdk.java.net/browse/JDK-8092295?page=com.atlassian.jira.plugin.system.issuetabpanels%3Achangehistory-tabpanel
-        // also yes this errors if something un-parsable is entered, deal with it I'm not building a custom parser
-
         Datepicker_Manager(date_birthday);
     }
 
@@ -195,7 +190,8 @@ public class Controller implements Initializable {
 
     // fine maybe ill build a SMALL parser because LocalDate isn't playing nice
     public void Datepicker_Manager(DatePicker paincreator){
-        System.out.println("datepicker manager called");
+        // getValue cannot be used because it doesn't update upon text entry see
+        // https://bugs.openjdk.java.net/browse/JDK-8092295?page=com.atlassian.jira.plugin.system.issuetabpanels%3Achangehistory-tabpanel
         String date = date_birthday.getEditor().getText();
 
         if (date.equals("")) {
@@ -205,6 +201,7 @@ public class Controller implements Initializable {
             // if date is of incorrect length don't potentially cause errors
             return;
         } else {
+            // yes theres still many ways this can error and it's going to be painful to catch all of them
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             getListViewSelected().setBirthdate(LocalDate.parse(date, formatter));
         }
