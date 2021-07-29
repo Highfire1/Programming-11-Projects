@@ -13,17 +13,9 @@ public class Friend implements Serializable {
     private String profile_image = "default.png";
     private String notes = "";
     private Boolean favorite = false;
-    private int id;
 
 
-
-    Friend(int id){
-        this.id = id;
-    }
-
-    Friend(){
-        this.id = 0;
-    }
+    Friend(){}
 
 
 
@@ -53,8 +45,6 @@ public class Friend implements Serializable {
         this.profile_image = values[3];
         this.notes = values[4];
         this.favorite = Boolean.parseBoolean(values[5]);
-        this.id = Integer.parseInt(values[6]);
-
     }
 
     public String getName() {
@@ -103,13 +93,5 @@ public class Friend implements Serializable {
 
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

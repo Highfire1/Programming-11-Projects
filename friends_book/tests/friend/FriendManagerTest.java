@@ -27,36 +27,18 @@ class FriendManagerTest {
     @Test
     void get_friend() {
         friends.add_blank_friend();
-        Friend tmp = friends.get_friend(0);
-        assertEquals(tmp.getName().toString(), "NO_NAME");
-    }
-
-    @Test
-    void get_missing_friend(){
-        Friend tmp = friends.get_friend(999);
-        assertNull(tmp);
-    }
-
-    @Test
-    void add_friend() {
-        Friend bob = new Friend();
-        bob.setName("bob");
-
-        friends.add_friend(bob);
-
-        assertEquals(friends.getObservableList().size(), 1);
+        assertEquals(friends.getObservableList().get(0).getName(), "BLANK_NAME");
     }
 
     @Test
     void delete_friend() {
-        Friend bob = new Friend(123);
-        bob.setName("bob");
-
-        friends.add_friend(bob);
+        friends.add_blank_friend();
 
         assertEquals(friends.getObservableList().size(), 1);
 
-        friends.delete_friend(bob);
+        Friend bye = friends.getObservableList().get(0);
+
+        friends.delete_friend(bye);
 
         assertEquals(friends.getObservableList().size(), 0);
 

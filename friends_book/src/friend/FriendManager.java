@@ -9,28 +9,10 @@ import java.io.*;
 public class FriendManager implements Serializable {
 
     private ObservableList<Friend> friends = FXCollections.observableArrayList();
-    int id = 0;
     private final String save_path = "data/friends.txt";
 
     public void add_blank_friend(){
-        this.friends.add(new Friend(id));
-        this.id++;
-    }
-
-    public void add_friend(Friend friend){
-        friend.setId(this.id);
-        this.friends.add(friend);
-        this.id++;
-    }
-
-
-    public Friend get_friend(int id){
-        for (Friend friend : this.friends) {
-            if (friend.getId() == id) {
-                return friend;
-            }
-        }
-        return null;
+        this.friends.add(new Friend());
     }
 
     public void delete_friend(Friend friend){
@@ -41,6 +23,8 @@ public class FriendManager implements Serializable {
         return this.friends;
     }
 
+    // save and load data to file
+    // uses "␟" as a parameter separator and " " as a line separator
     public void save_data() {
         try {
             FileWriter fw = new FileWriter(save_path, false);
@@ -73,8 +57,10 @@ public class FriendManager implements Serializable {
             String line;
             String actualline = "";
 
+            // reads lines until it encounters a line separator then it sends the data to a new Friend to parse
+
             while((line = br.readLine()) != null) {
-                actualline += line + "\n";
+                actualline += line + "\n"; // absolutely atrocious and i need to learn how to use stringBuilder but it works
 
                 if (actualline.contains("\u2028")) {
 
@@ -88,7 +74,6 @@ public class FriendManager implements Serializable {
                 }
             }
             br.close();
-
 
         } catch (IOException e) {
             e.printStackTrace();
