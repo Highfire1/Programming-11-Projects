@@ -10,6 +10,7 @@ public class FriendManager implements Serializable {
     private ObservableList<Friend> friends = FXCollections.observableArrayList();
     int id = 0;
     private final String save_path = "data/friends.txt";
+    public Friend highlighted;
 
     public void add_blank_friend(){
         this.friends.add(new Friend(id));
@@ -86,5 +87,14 @@ public class FriendManager implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public Friend getHighlighted() {
+        return highlighted;
+    }
+
+    public void setSelected(Friend highlighted) {
+        this.highlighted = highlighted;
     }
 }

@@ -14,6 +14,7 @@ import javafx.scene.layout.Background;
 
 import java.io.*;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Controller implements Initializable {
@@ -27,10 +28,9 @@ public class Controller implements Initializable {
     public CheckBox check_favorite;
     public TextArea text_notes;
     public DatePicker date_birthday;
+    public ImageView profile_image;
 
     private static FriendManager friends;
-    public ImageView profile_image;
-    private Friend selected;
     ArrayList<String> images;
 
     @Override
@@ -42,53 +42,55 @@ public class Controller implements Initializable {
         list_view.setItems(friends.getObservableList());
         list_view.setBackground(Background.EMPTY);
 
-
         images = new ArrayList<>();
         images.add("default.png");
         images.add("goose.jpg");
 
         list_view.scrollTo(0);
         list_view.getSelectionModel().select(0);
-        selected = friends.getObservableList().get(0);
-        set_fields();
-
-
+        set_anchorpane_fields();
 
     }
 
-    public Image load_img(String path) {
+    private Friend getListViewSelected(){
+        return (Friend) list_view.getSelectionModel().getSelectedItems().get(0);
+    }
+
+    private Image load_img(String path) {
         return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/" + path)));
     }
 
 
     public void menu_close_method(ActionEvent actionEvent) throws IOException {
-
         friends.save_data();
         Platform.exit();
     }
 
     public void list_view_mouseclicked(MouseEvent mouseEvent) {
-
-        Friend friend = (Friend) list_view.getSelectionModel().getSelectedItems().get(0);
-
-        selected = friend;
-
-        set_fields();
-
+        if (getListViewSelected() == null) {
+            return;
+        }
+        set_anchorpane_fields();
     }
 
-    public void set_fields(){
-        profile_image.setImage(load_img(selected.getProfile_image()));
-        text_name.setText(selected.getName());
-        date_birthday.setValue(selected.getBirthdate());
-        text_phone.setText(selected.getPhone_number());
-        check_favorite.setSelected(selected.getFavorite());
-        text_notes.setText(selected.getNotes());
+    public void set_anchorpane_fields(){
+        Friend fr = getListViewSelected();
+
+        profile_image.setImage(load_img(fr.getProfile_image()));
+        text_name.setText(fr.getName());
+        if (fr.getBirthdate().equals(LocalDate.of(1970, 1, 1))) {
+            date_birthday.getEditor().clear();
+        } else {
+            date_birthday.setValue(fr.getBirthdate());
+        }
+        text_phone.setText(fr.getPhone_number());
+        check_favorite.setSelected(fr.getFavorite());
+        text_notes.setText(fr.getNotes());
     }
 
 
     public void menu_delete_method(ActionEvent actionEvent) {
-        friends.delete_friend(selected);
+        friends.delete_friend(getListViewSelected());
         list_view.getSelectionModel().clearSelection();
 
         profile_image.setImage(null);
@@ -111,33 +113,34 @@ public class Controller implements Initializable {
     }
 
     public void check_favorite_update(MouseEvent inputMethodEvent) {
-        selected.setFavorite(check_favorite.isSelected());
+        getListViewSelected().setFavorite(check_favorite.isSelected());
     }
 
     public void text_phone_update(KeyEvent inputMethodEvent) {
-        selected.setPhone_number(text_phone.getText());
+        getListViewSelected().setPhone_number(text_phone.getText());
     }
 
     public void text_notes_update(KeyEvent inputMethodEvent) {
-        selected.setNotes(text_notes.getText());
+        getListViewSelected().setNotes(text_notes.getText());
     }
 
     public void text_name_update(KeyEvent keyEvent) {
-        selected.setName(text_name.getText());
+        getListViewSelected().setName(text_name.getText());
         list_view.refresh();
     }
 
     public void date_birthday_method(ActionEvent actionEvent) {
-        selected.setBirthdate(date_birthday.getValue());
+        getListViewSelected().setBirthdate(date_birthday.getValue());
     }
 
-    public static FriendManager getFriends() {
+    public static FriendManager getFriendsObject() {
         return friends;
     }
 
+
     public void profile_image_update(MouseEvent mouseEvent) {
 
-        int i = images.indexOf(selected.getProfile_image());
+        int i = images.indexOf(getListViewSelected().getProfile_image());
 
         if(i == images.size() - 1) {
             i = 0;
@@ -145,8 +148,8 @@ public class Controller implements Initializable {
             i++;
         }
 
-        selected.setProfile_image(images.get(i));
+        getListViewSelected().setProfile_image(images.get(i));
 
-        set_fields();
+        set_anchorpane_fields();
     }
 }

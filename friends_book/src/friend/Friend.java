@@ -8,7 +8,7 @@ import java.util.List;
 public class Friend implements Serializable {
     // keeping https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/ in mind...
     private String name = "BLANK_NAME";
-    private LocalDate birthdate = LocalDate.of(2000, 1, 1);
+    private LocalDate birthdate = LocalDate.of(1970, 1, 1);
     private String phone_number = "";
     private String profile_image = "default.png";
     private String notes = "";

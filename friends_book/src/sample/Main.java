@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import static sample.Controller.getFriendsObject;
+
 public class Main extends Application {
 
     @Override
@@ -14,11 +16,14 @@ public class Main extends Application {
         primaryStage.setTitle("Andys Friend Book");
         primaryStage.setScene(new Scene(root, 480, 800));
         primaryStage.show();
+
+        primaryStage.setMaxHeight(800);
+        primaryStage.setMaxWidth(480);
     }
 
     @Override
     public void stop(){
-        Controller.getFriends().save_data();
+        getFriendsObject().save_data();
     }
 
     public static void main(String[] args) {
