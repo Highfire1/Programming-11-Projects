@@ -31,8 +31,7 @@ public class Controller implements Initializable {
     private static FriendManager friends;
     public ImageView profile_image;
     private Friend selected;
-
-    LinkedHashMap<String, Image> images = new LinkedHashMap<>();
+    ArrayList<String> images;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,10 +42,10 @@ public class Controller implements Initializable {
         list_view.setItems(friends.getObservableList());
         list_view.setBackground(Background.EMPTY);
 
-        images.put("default.png", load_img("default.png"));
-        images.put("goose.jpg", load_img("goose.jpg"));
 
-        System.out.println(images);
+        images = new ArrayList<>();
+        images.add("default.png");
+        images.add("goose.jpg");
 
         list_view.scrollTo(0);
         list_view.getSelectionModel().select(0);
@@ -79,7 +78,7 @@ public class Controller implements Initializable {
     }
 
     public void set_fields(){
-        profile_image.setImage(images.get(selected.getProfile_image()));
+        profile_image.setImage(load_img(selected.getProfile_image()));
         text_name.setText(selected.getName());
         date_birthday.setValue(selected.getBirthdate());
         text_phone.setText(selected.getPhone_number());
@@ -137,6 +136,17 @@ public class Controller implements Initializable {
     }
 
     public void profile_image_update(MouseEvent mouseEvent) {
-        //if (selected.getProfile_image() == )
+
+        int i = images.indexOf(selected.getProfile_image());
+
+        if(i == images.size() - 1) {
+            i = 0;
+        } else {
+            i++;
+        }
+
+        selected.setProfile_image(images.get(i));
+
+        set_fields();
     }
 }

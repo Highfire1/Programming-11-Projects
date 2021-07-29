@@ -10,7 +10,7 @@ public class Friend implements Serializable {
     private String name = "BLANK_NAME";
     private LocalDate birthdate = LocalDate.of(2000, 1, 1);
     private String phone_number = "";
-    private String profile_image = "/assets/default.png";
+    private String profile_image = "default.png";
     private String notes = "";
     private Boolean favorite = false;
     private int id;
