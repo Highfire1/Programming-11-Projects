@@ -41,15 +41,14 @@ public class Controller implements Initializable {
 
         list_view.setItems(friends.getObservableList());
         list_view.setBackground(Background.EMPTY);
+        text_notes.setWrapText(true);
 
         images = new ArrayList<>();
         images.add("default.png");
         images.add("goose.jpg");
 
-        list_view.scrollTo(0);
-        list_view.getSelectionModel().select(0);
-        set_anchorpane_fields();
 
+        setListViewFirstItem();
     }
 
     private Friend getListViewSelected(){
@@ -58,6 +57,12 @@ public class Controller implements Initializable {
 
     private Image load_img(String path) {
         return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/" + path)));
+    }
+
+    private void setListViewFirstItem(){
+        list_view.scrollTo(0);
+        list_view.getSelectionModel().select(0);
+        set_anchorpane_fields();
     }
 
 
@@ -110,6 +115,8 @@ public class Controller implements Initializable {
 
     public void menu_load_method(ActionEvent actionEvent) {
         friends.load_data();
+        list_view.refresh();
+        setListViewFirstItem();
     }
 
     public void check_favorite_update(MouseEvent inputMethodEvent) {

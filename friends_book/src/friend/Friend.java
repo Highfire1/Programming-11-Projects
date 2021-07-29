@@ -44,8 +44,8 @@ public class Friend implements Serializable {
         return data;
     }
 
-    public void load_values(String line){
-        String[] values = line.split("␟");
+    public void load_values(String content){
+        String[] values = content.split("␟");
 
         this.name = values[0];
         this.birthdate = LocalDate.parse(values[1]);

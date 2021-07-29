@@ -10,7 +10,6 @@ public class FriendManager implements Serializable {
     private ObservableList<Friend> friends = FXCollections.observableArrayList();
     int id = 0;
     private final String save_path = "data/friends.txt";
-    public Friend highlighted;
 
     public void add_blank_friend(){
         this.friends.add(new Friend(id));
@@ -33,11 +32,6 @@ public class FriendManager implements Serializable {
         return null;
     }
 
-    public void clear(){
-        this.friends.clear();
-    }
-
-
     public void delete_friend(Friend friend){
         this.friends.remove(friend);
     }
@@ -53,6 +47,7 @@ public class FriendManager implements Serializable {
 
             for (Friend friend : friends) {
                 bw.write(friend.save_values());
+                bw.write("\u2028");
                 bw.newLine();
             }
             bw.close();
@@ -63,23 +58,33 @@ public class FriendManager implements Serializable {
     }
 
     public void load_data()  {
-        if (!new File(save_path).exists()) {
+        File testfile = new File(save_path);
+        if (!testfile.exists() || testfile.length() == 0) {
             add_blank_friend();
             return;
         }
 
         try {
+            this.friends.clear();
+
             FileReader fr = new FileReader(save_path);
             BufferedReader br = new BufferedReader(fr);
             String line;
-
-            clear();
+            String actualline = "";
 
             while((line = br.readLine()) != null) {
+                actualline += line + "\n";
 
-                Friend tmp = new Friend();
-                tmp.load_values(line);
-                this.friends.add(tmp);
+                if (actualline.contains("\u2028")) {
+
+                    actualline.replace("\u2028", "");
+
+                    Friend tmp = new Friend();
+                    tmp.load_values(actualline);
+                    this.friends.add(tmp);
+
+                    actualline = "";
+                }
             }
             br.close();
 
@@ -87,14 +92,5 @@ public class FriendManager implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-    public Friend getHighlighted() {
-        return highlighted;
-    }
-
-    public void setSelected(Friend highlighted) {
-        this.highlighted = highlighted;
     }
 }

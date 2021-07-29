@@ -34,7 +34,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <ListView fx:id="list_view" onMouseClicked="#list_view_mouseclicked" prefHeight="380.0" />
+            <ListView fx:id="list_view" onMouseClicked="#list_view_mouseclicked" prefHeight="340.0" />
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="480.0">
                <children>
                   <ImageView fx:id="profile_image" fitHeight="150.0" fitWidth="150.0" layoutX="20.0" layoutY="15.0" onMouseReleased="#profile_image_update" pickOnBounds="true" preserveRatio="true" />
@@ -42,11 +42,11 @@
                   <Text layoutX="180.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PHONE" wrappingWidth="51.5625" />
                   <Text layoutX="180.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIRTHDAY" wrappingWidth="73.5625" />
                   <Text layoutX="180.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STAR" wrappingWidth="45.5625" />
-                  <TextField fx:id="text_name" layoutX="240.0" layoutY="19.0" onKeyReleased="#text_name_update" prefHeight="25.0" prefWidth="220.0" />
-                  <TextField fx:id="text_phone" layoutX="240.0" layoutY="53.0" onKeyReleased="#text_phone_update" prefHeight="25.0" prefWidth="220.0" />
-                  <DatePicker fx:id="date_birthday" layoutX="240.0" layoutY="88.0" onAction="#date_birthday_method" prefWidth="220.0" />
+                  <TextField fx:id="text_name" layoutX="240.0" layoutY="19.0" onKeyReleased="#text_name_update" prefHeight="25.0" prefWidth="210.0" />
+                  <TextField fx:id="text_phone" layoutX="240.0" layoutY="53.0" onKeyReleased="#text_phone_update" prefHeight="25.0" prefWidth="210.0" />
+                  <DatePicker fx:id="date_birthday" layoutX="240.0" layoutY="88.0" onAction="#date_birthday_method" prefWidth="210.0" />
                   <CheckBox fx:id="check_favorite" layoutX="240.0" layoutY="127.0" mnemonicParsing="false" onMouseReleased="#check_favorite_update" />
-                  <TextArea fx:id="text_notes" layoutX="20.0" layoutY="180.0" onKeyReleased="#text_notes_update" prefHeight="200.0" prefWidth="440.0" />
+                  <TextArea fx:id="text_notes" layoutX="20.0" layoutY="180.0" onKeyReleased="#text_notes_update" prefHeight="200.0" prefWidth="430.0" />
                </children>
             </AnchorPane>
          </children>
